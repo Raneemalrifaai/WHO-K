@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanaleneiland — Healthy Cities Analysis</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#ffffff;
+  --bg2:#f8f8f7;
+  --bg3:#f2f1ef;
+  --text:#111110;
+  --muted:#5a5a57;
+  --dim:#9a9894;
+  --border:rgba(0,0,0,0.09);
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+body{font-family:var(--font);background:var(--bg3);color:var(--text);min-height:100vh;}
+
+/* HERO */
+.hero{background:#ffffff;border-bottom:1px solid var(--border);padding:48px 32px 40px;}
+.hero-inner{max-width:860px;margin:0 auto;}
+.hero-tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:10px;background:#f2f1ef;color:#555553;border:0.5px solid rgba(0,0,0,0.12);margin-bottom:16px;letter-spacing:0.02em;}
+.hero h1{font-size:clamp(26px,5vw,44px);font-weight:500;color:#111110;line-height:1.1;margin-bottom:12px;}
+.hero h1 span{color:#444441;}
+.hero p{font-size:14px;color:#5a5a57;max-width:560px;line-height:1.75;margin-bottom:28px;}
+
+/* STAT STRIP */
+.stat-strip{display:flex;gap:10px;flex-wrap:wrap;}
+.stat{background:#f8f8f7;border:0.5px solid rgba(0,0,0,0.10);border-radius:10px;padding:12px 16px;min-width:120px;}
+.stat-n{font-size:22px;font-weight:500;color:#111110;}
+.stat-l{font-size:10px;color:#8a8a87;margin-top:2px;}
+
+/* MAIN */
+.main{max-width:860px;margin:0 auto;padding:32px 24px;}
+.section-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--dim);margin-bottom:16px;padding-bottom:8px;border-bottom:0.5px solid var(--border);}
+
+/* CARDS */
+.cards{display:flex;flex-direction:column;gap:8px;margin-bottom:36px;}
+.card{display:flex;gap:0;background:#ffffff;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--text);transition:border-color .15s,box-shadow .15s;}
+.card:hover{border-color:#aaa;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.card-num{width:52px;min-width:52px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:500;border-right:0.5px solid var(--border);color:#888;background:#fafaf9;}
+.card-body{flex:1;padding:16px 18px;}
+.card-body h2{font-size:14px;font-weight:500;margin-bottom:4px;color:#111110;}
+.card-body p{font-size:12px;color:var(--muted);line-height:1.6;}
+.card-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:8px;margin-top:8px;font-weight:500;background:#f2f1ef;color:#666663;}
+.card-arrow{width:44px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#ccc;}
+.card:hover .card-arrow{color:#555;}
+
+/* MANUAL BOX */
+.manual-box{background:#ffffff;border:0.5px solid var(--border);border-radius:12px;padding:22px 24px;margin-bottom:36px;}
+.manual-box h3{font-size:13px;font-weight:600;color:#111110;margin-bottom:4px;}
+.manual-intro{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.6;}
+.step{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;}
+.step:last-child{margin-bottom:0;}
+.step-n{width:22px;min-width:22px;height:22px;border-radius:50%;background:#111110;color:#fff;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-text{font-size:12px;color:var(--muted);line-height:1.65;}
+.step-text strong{color:#111110;font-weight:500;}
+.step-divider{height:0.5px;background:var(--border);margin:14px 0;}
+
+/* SOURCES */
+.sources-box{background:#ffffff;border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;font-size:12px;color:var(--muted);line-height:1.85;}
+
+footer{text-align:center;padding:20px;font-size:10px;color:var(--dim);border-top:0.5px solid var(--border);margin-top:8px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">WHO Healthy Cities · Utrecht, Netherlands</span>
+    <h1>Kanaleneiland<br><span>Healthy Cities Analysis</span></h1>
+    <p>Six interactive visualisations mapping health deficits, WHO 6P criteria, causal connections, and evidence-based intervention pathways for Kanaleneiland district.</p>
+    <div class="stat-strip">
+      <div class="stat"><div class="stat-n">−15</div><div class="stat-l">Socio-economic gap pts</div></div>
+      <div class="stat"><div class="stat-n">−27</div><div class="stat-l">Park access gap pts</div></div>
+      <div class="stat"><div class="stat-n">34%</div><div class="stat-l">Child poverty rate</div></div>
+      <div class="stat"><div class="stat-n">52%</div><div class="stat-l">Physical impairments</div></div>
+      <div class="stat"><div class="stat-n">20%</div><div class="stat-l">WHO criteria met</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="section-title">Visualisations</div>
+  <div class="cards">
+
+    <a class="card" href="02_relationship_bubble_map.html">
+      <div class="card-num">01</div>
+      <div class="card-body">
+        <h2>Relationship Bubble Map</h2>
+        <p>Interactive network of 15 health factors colour-coded by WHO 6P pillar. Click any bubble to see its CBS indicator score, Utrecht gap, WHO source, and causal connections to other factors. Toggle pillar filters. Drag to rearrange.</p>
+        <span class="card-tag">Interactive · Physics simulation · 15 nodes · Sources cited</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="02_who_6p_criteria.html">
+      <div class="card-num">02</div>
+      <div class="card-body">
+        <h2>WHO 6P Criteria vs Kanaleneiland</h2>
+        <p>Every WHO Phase VII benchmark compared against Kanaleneiland's measured CBS scores. Six pillar tabs — People, Place, Participation, Prosperity, Peace, Planet. Status badges show meets / fails / borderline for each criterion. Overall pass rate: 20%.</p>
+        <span class="card-tag">6 pillars · 30+ criteria · Pass / fail / borderline</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="03_cascade_map.html">
+      <div class="card-num">03</div>
+      <div class="card-body">
+        <h2>Cascade Map</h2>
+        <p>Diagram showing causal connections from six interventions to six health outcome gaps. Line thickness encodes evidence strength. Click any bubble to highlight its pathways and see which connections are strong, moderate, or indirect.</p>
+        <span class="card-tag">Evidence-weighted · Click to highlight · CBS gap scores</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="04_intervention_sequence.html">
+      <div class="card-num">04</div>
+      <div class="card-body">
+        <h2>Intervention Sequence</h2>
+        <p>Six-step prioritised intervention guide grounded in WHO evidence. Click each step to expand concrete actions for Kanaleneiland, cascade effects, and key indicators. Ordered: governance → economic equity → green space → loneliness → housing → active travel.</p>
+        <span class="card-tag">WHO sources · Cascade tags · Concrete actions</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="05_full_intervention_simulator.html">
+      <div class="card-num">05</div>
+      <div class="card-body">
+        <h2>Full Intervention Simulator</h2>
+        <p>20 sliders across all six WHO pillars. Scores stay sticky on the right as you scroll. Five scenario presets show the pathway from current baseline to full WHO HiAP. WHO benchmark threshold lines update in real time.</p>
+        <span class="card-tag">20 sliders · Sticky scores · 5 scenarios · WHO thresholds</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card" href="06_information_sources.html">
+      <div class="card-num">06</div>
+      <div class="card-body">
+        <h2>Information Sources</h2>
+        <p>Every academic and WHO source used in the analysis, organised by pillar. Each entry explains what the evidence proved, why it creates the specific causal connection in the map, and the full citation.</p>
+        <span class="card-tag">12 sources · Full citations · Pillar-organised</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+  </div>
+
+  <div class="section-title">How to use this tool</div>
+  <div class="manual-box">
+    <h3>User Manual — works in any modern browser, no installation needed</h3>
+    <p class="manual-intro">Follow these steps in order for the clearest understanding of Kanaleneiland's health situation and what can be done about it.</p>
+
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-text"><strong>Open the Relationship Bubble Map (01).</strong> This is your starting point. You will see 15 health factors displayed as coloured bubbles — each colour represents a WHO 6P pillar. Click any bubble to reveal its CBS score, the gap compared to Utrecht's average, the WHO source behind it, and which other factors it connects to. Use the pillar toggle buttons at the top to filter by category. You can also drag bubbles to rearrange the layout.</div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-text"><strong>Open the WHO 6P Criteria (02) to understand the comparison.</strong> This page shows every official WHO Phase VII benchmark side by side with Kanaleneiland's real measured data. Use the six pillar tabs (People, Place, Participation, Prosperity, Peace, Planet) to navigate. Each criterion shows a clear status badge — <em>meets</em>, <em>fails</em>, or <em>borderline</em> — so you can immediately see where the district stands against international standards. The overall pass rate is 20%.</div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-text"><strong>Open the Cascade Map (03) to see how factors connect.</strong> Trace exactly how an intervention on one factor flows through to health outcomes. Click any bubble on the left to light up its specific pathways. Line thickness shows how strong the evidence is for each connection — thicker lines mean stronger, more direct evidence.</div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-text"><strong>Open the Intervention Sequence (04) for a step-by-step action plan.</strong> Click each numbered step to expand the concrete actions recommended for Kanaleneiland, the cascade effects they trigger, and the indicator they target. Steps are ordered by priority: governance first, then economic equity, green space, loneliness, housing, and active travel.</div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <div class="step">
+      <div class="step-n">5</div>
+      <div class="step-text"><strong>Open the Full Intervention Simulator (05) to test scenarios.</strong> Use the 20 sliders to adjust each indicator and watch the scores update live. Start with one of the five preset scenarios — try <em>Greenery only</em> first to see how limited a single-pillar approach is, then switch to <em>Full WHO HiAP</em> to see what coordinated action across all six pillars achieves.</div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <div class="step">
+      <div class="step-n">6</div>
+      <div class="step-text"><strong>Open Information Sources (06) for the full evidence base.</strong> Every data point and connection in this tool is backed by a listed source. Use this page to look up any specific claim, check the full citation, or understand why a particular causal link was drawn.</div>
+    </div>
+  </div>
+
+  <div class="section-title">Data sources</div>
+  <div class="sources-box">
+    <strong style="color:var(--text)">CBS OpenData Netherlands</strong> — Kerncijfers Wijken en Buurten, Table 86270ENG · opendata.cbs.nl<br>
+    <strong style="color:var(--text)">Gezondheidsmonitor</strong> — Volwassenen en Ouderen 2020/2022 · RIVM/GGD/CBS · rivm.nl<br>
+    <strong style="color:var(--text)">WHO Framework</strong> — European Healthy Cities Network Phase VII 2019–2024 · who.int/europe/healthy-cities<br>
+    <strong style="color:var(--text)">Key evidence</strong> — Marmot Review 2010 · Holt-Lunstad 2015 · PMC Green Space Review 2021 · WHO GAPPA 2018 · WHO AQG 2021 · King's College Urban Mind 2021 · IPCC AR6 2021
+  </div>
+
+</div>
+
+<footer>Kanaleneiland Healthy Cities Analysis · WHO 6P Framework Phase VII 2019–2024 · Data: CBS 86270ENG · All files work offline in any modern browser</footer>
+</body>
+</html>
